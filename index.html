@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Players Stats</title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <div class="box">
+      <span class="label">Name</span>
+      <span id="name">-</span>
+    </div>
+    <div class="box">
+      <span class="label">Team</span>
+      <span id="team">-</span>
+    </div>
+    <div class="box">
+      <span class="label">Kills</span>
+      <span id="kills">-</span>
+    </div>
+    <script>
+      const electron = require('electron');
+      const ipcRenderer = electron.ipcRenderer;
+
+      ipcRenderer.on('name',(event,data) => {
+        document.getElementById('name').innerHTML = data;
+      });
+      ipcRenderer.on('team',(event,data) => {
+        document.getElementById('team').innerHTML = data;
+      });
+      ipcRenderer.on('kills',(event,data) => {
+        document.getElementById('kills').innerHTML = data;
+      });
+    </script>
+  </body>
+</html>
